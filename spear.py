@@ -4,6 +4,7 @@ def loadTeam(fname):
     return [line.strip() for line in open(fname)]
 
 def Spearman(m,c):
+	#quick check to make sure the lists are the same length
     assert len(m) == len(c)
     #brute force search
     #could build a dictionary with ranks instead if perf is a concern
