@@ -3,9 +3,17 @@
 def loadTeam(fname):
     return [line.strip() for line in open(fname)]
 
+def makeDict(sourceList):
+    retDict = {}
+    for i in range(len(sourceList)):
+        retDict[i+1]=sourceList[i]
+    return retDict
+
+
 def Spearman(m,c):
 	#quick check to make sure the lists are the same length
     assert len(m) == len(c)
+    assert len(m) == 351
     #brute force search
     #could build a dictionary with ranks instead if perf is a concern
     sum = 0
