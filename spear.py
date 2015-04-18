@@ -4,6 +4,7 @@ import pylab
 def loadTeam(fname):
     return [line.strip() for line in open(fname)]
 
+#not used
 def makeDict(sourceList):
     retDict = {}
     for i in range(len(sourceList)):
@@ -15,16 +16,17 @@ def fakeDict(sourceList):
     #so just make a list of tuples
     retDict = []
     for i in range(len(sourceList)):
+        #need to add 1 since no team is ranked 0
         retDict.append((i+1,sourceList[i]))
     return retDict
 
-
 def Spearman(m,c):
-	#quick check to make sure the lists are the same length
+	#make sure the lists are the same length
     assert len(m) == len(c)
     assert len(m) == 351
     #brute force search
     #could build a dictionary with ranks instead if perf is a concern
+    #or move the plot code here and produce the plot at the same time
     sum = 0
     colleyIndex = 1
     for team in c:
@@ -44,7 +46,7 @@ def makePlot(m,c):
     cd = fakeDict(c)
     md = fakeDict(m)
     plotPoints = []
-
+    #inefficient code
     mval = 0
     for mteam in md:
         mval+=1
