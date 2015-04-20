@@ -48,19 +48,24 @@ def makePlot(m,c):
     plotPoints = []
     #inefficient code
     mval = 0
+    jc=[] #just the colley ranks, used for the scatter plot
+    jm=[] #just massey ranks, used for scatter
     for mteam in md:
         mval+=1
         #go through team list and append x and y as massey, colley
         cval = 1
         for cteam in cd:
             if cteam[1] == mteam[1]:
-                plotPoints.append((mval,cval))
+                plotPoints.append((mval,cval))#this plot did not make a lot of sense
+                jm.append(mval)
+                jc.append(cval)
                 break
             else:
                 cval+=1
 
     pylab.title("Compare Massey and Colley Team Rankings 2014")
-    pylab.plot(plotPoints)
+    #pylab.plot(plotPoints)
+    pylab.scatter(jm,jc)
     pylab.xlabel("Massey Rank")
     pylab.ylabel("Colley Rank")
     pylab.show()
